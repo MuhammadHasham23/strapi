@@ -116,7 +116,15 @@ const Header = ({
         label: formatMessage({ id: labelID }),
         onClick,
       };
-      headerActions.unshift(action);
+      
+      const previewAction = {
+        ...primaryButtonObject,
+        disabled: isCreatingEntry || didChangeData,
+        isLoading,
+        label: 'Preview',
+        onClick: () => alert('Here will be an iframe')
+      };
+      headerActions.unshift(previewAction);
       headerActions.unshift(action);
     }
 
